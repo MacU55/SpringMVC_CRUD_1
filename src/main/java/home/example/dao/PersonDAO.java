@@ -14,7 +14,7 @@ public class PersonDAO {
 
     {
         peopleList = new ArrayList<>();
-        peopleList.add(new Person(PERSON_ID, "Bob"));
+        peopleList.add(new Person(++PERSON_ID, "Bob"));
         peopleList.add(new Person(++PERSON_ID, "Mike"));
         peopleList.add(new Person(++PERSON_ID, "Olga"));
         peopleList.add(new Person(++PERSON_ID, "John"));
@@ -25,8 +25,10 @@ public class PersonDAO {
     }
 
     public Person show(int id) {
-               Person person = peopleList.get(id);
-            return person;
+//               Person person = peopleList.get(id);
+//            return peopleList;
+        return peopleList.stream().filter(person -> person.getId() == id).findAny().orElse(null);
+
 
     }
 }
