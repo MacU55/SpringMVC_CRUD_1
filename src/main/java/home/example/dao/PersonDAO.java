@@ -24,11 +24,15 @@ public class PersonDAO {
         return peopleList;
     }
 
+
     public Person show(int id) {
 //               Person person = peopleList.get(id);
 //            return peopleList;
         return peopleList.stream().filter(person -> person.getId() == id).findAny().orElse(null);
+    }
 
-
+    public void save(Person person) {
+        person.setId(++PERSON_ID);
+        peopleList.add(person);
     }
 }
